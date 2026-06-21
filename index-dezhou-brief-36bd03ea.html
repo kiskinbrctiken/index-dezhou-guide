@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>再次记起 · 德州扑克游戏笔记</title>
+    <style>
+        /* 重置与基础 */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', sans-serif;
+            background: #f2f3f5;
+            color: #2c3038;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 760px;
+            width: 100%;
+        }
+
+        /* 卡片系统 */
+        .card {
+            background: #ffffff;
+            border: 1px solid #e4e6ea;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.03);
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.8rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.03);
+        }
+
+        .card-soft {
+            background: #fafbfc;
+            border-color: #dde0e4;
+        }
+
+        /* 标题与文字 */
+        .site-title {
+            font-size: 1.9rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            color: #1e2329;
+            margin-bottom: 0.3rem;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #5b616a;
+            margin-bottom: 1.25rem;
+            border-left: 3px solid #aab0b9;
+            padding-left: 0.9rem;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 530;
+            margin-top: 1.2rem;
+            margin-bottom: 0.7rem;
+            color: #1e2329;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 1.1rem;
+            margin-bottom: 0.4rem;
+            color: #2e333b;
+        }
+
+        p {
+            margin-bottom: 1.1rem;
+            font-size: 1rem;
+        }
+
+        .quote-note {
+            background: #f0f1f4;
+            border-left: 4px solid #949ba6;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0 10px 10px 0;
+            font-style: normal;
+            color: #3d434d;
+            margin: 1.2rem 0;
+            font-size: 0.96rem;
+        }
+
+        .faq-item {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #eaecef;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: 510;
+            color: #1e2329;
+        }
+
+        .faq-answer {
+            color: #4a505b;
+            margin-top: 0.2rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e9ebee;
+            color: #3a404b;
+            font-size: 0.8rem;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            margin-right: 0.3rem;
+        }
+
+        .continue-link {
+            text-align: right;
+            margin-top: 1.2rem;
+        }
+
+        a {
+            color: #32638f;
+            text-decoration: none;
+            border-bottom: 1px dotted #b7c4d2;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        a:hover {
+            color: #134a73;
+            border-bottom: 1px solid #32638f;
+        }
+
+        .btn-subtle {
+            display: inline-block;
+            background: #f2f3f5;
+            border: 1px solid #d0d4da;
+            border-radius: 40px;
+            padding: 0.35rem 1.1rem;
+            font-size: 0.9rem;
+            color: #2e343d;
+            margin-top: 0.2rem;
+            transition: background 0.15s;
+            text-decoration: none;
+            border-bottom: 1px solid #d0d4da;
+        }
+
+        .btn-subtle:hover {
+            background: #e4e7ec;
+            border-color: #b2b9c2;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #e0e3e8;
+            margin: 1.6rem 0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 520px) {
+            body {
+                padding: 1rem 0.6rem;
+            }
+            .card {
+                padding: 1.3rem 1.2rem;
+            }
+            .site-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* 装饰 */
+        .muted-meta {
+            color: #7d848f;
+            font-size: 0.85rem;
+        }
+
+        .spacer {
+            height: 0.4rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- 标题卡片 -->
+        <div class="card">
+            <div class="site-title">♢ 再次到访 · 牌桌边上</div>
+            <div class="subhead">一份温和的德州扑克阅读笔记 · 持续更新的理由</div>
+            <p style="margin-bottom: 0.2rem;">
+                如果你曾经打开过这个页面，那么这一次可能更接近一次对话。
+                关于 <a href="https://index-dezhou.com">德州扑克游戏</a> 的讨论，常常从规则开始，
+                但很少在规则结束。这里没有喧哗的广告，只有零散但真实的记录。
+            </p>
+            <div class="muted-meta" style="margin-top: 0.8rem;">
+                <span class="tag">再次访问</span> <span class="tag">收藏夹</span> <span class="tag">慢阅读</span>
+            </div>
+        </div>
+
+        <!-- 正文第一段：重访与收藏 -->
+        <div class="card">
+            <h2>为什么再次打开这个页面</h2>
+            <p>
+                浏览器的收藏夹里，总有一些链接不是用来“快速到达”，而是为了“记得回来”。
+                关于 <a href="https://index-dezhou.com">德州扑克游戏</a> 的页面，我希望它属于后者。
+                它记录的不仅是规则与术语，更是一种观察：手牌范围、底池赔率、下注模式，
+                以及牌桌上那些细微的节奏变化。每一次重读，都像在整理自己的判断。
+            </p>
+            <p>
+                收藏一个页面，有时候是因为内容值得反复咀嚼，有时候只是因为页面本身的安静气质。
+                这里没有弹窗、倒计时或催促注册的按钮，只有文字和偶尔的牌局片段。
+                如果你也习惯把有用的东西留在标签栏里，或许这个页面恰好合适。
+            </p>
+            <div class="quote-note">
+                收藏不是结束，而是下一次思考的开始。 —— 一款牌桌边上的笨拙哲学
+            </div>
+        </div>
+
+        <!-- 正文第二段：持续关注的理由 -->
+        <div class="card">
+            <h2>持续关注，但不追逐</h2>
+            <p>
+                持续关注某件事，不一定是为了精通。很多人把<a href="https://index-dezhou.com">德州扑克游戏</a>当作一种智力消遣，
+                偶尔研究一手牌的处理，或者观察职业选手在压力下的决策路径。
+                这个页面会慢慢积累一些手牌复盘、概率笔记和策略随笔，更新节奏不固定，
+                但每篇都经过筛选——不堆砌术语，也不故作高深。
+            </p>
+            <p>
+                你不需要每天检查有没有新内容。把它放在书签里，过段时间来看，或许有一两段恰好匹配你最近的困惑。
+                信息的价值不在于数量，而在于它出现在需要的时候。这也是为什么页面设计得尽量简单，
+                没有推送提醒，没有积分体系，只有文字和牌局。
+            </p>
+        </div>
+
+        <!-- 特点与场景混合卡片 -->
+        <div class="card card-soft">
+            <h3>页面里你能找到什么</h3>
+            <p>
+                ▸ 基础概率与手牌印象 —— 不是教科书，更像朋友在牌桌边随口说的要点。<br>
+                ▸ 从翻前到河牌的逻辑线 —— 尽量用真实对局片段，不编造夸张胜负。<br>
+                ▸ 关于心态和频率的随笔 —— 牌桌外也适用的思维习惯。<br>
+                ▸ 偶尔有引用、书摘或牌手语录 —— 标注来源，不吹捧。
+            </p>
+            <div class="quote-note" style="margin-top: 0.6rem; margin-bottom: 0.2rem;">
+                “你不需要是专家也能享受思考的乐趣——德州扑克只是提供了一个框架。”
+            </div>
+        </div>
+
+        <!-- FAQ 摘要卡片 -->
+        <div class="card">
+            <h2>一些可能会想的问题</h2>
+            <div class="faq-item">
+                <div class="faq-question">✦ 这个页面适合完全没接触过规则的人吗？</div>
+                <div class="faq-answer">
+                    最好先了解基本手牌大小和行动顺序。页面里不会逐条解释规则，
+                    但会有简单的上下文提示。如果完全零基础，建议先花十分钟熟悉一下公共牌结构。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">✦ 内容更新频率是多久？</div>
+                <div class="faq-answer">
+                    没有固定日程。可能一周两三次，也可能两三周才有一篇。
+                    重点是不凑数，每篇笔记都经过整理。你可以通过收藏夹自然回访。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">✦ 页面会加入论坛或社区功能吗？</div>
+                <div class="faq-answer">
+                    短期内不会。这里保持单向输出与有限反馈，避免变成喧闹的讨论场。
+                    如果你有具体的牌局问题，可以发邮件，我会选择有代表性的内容写成笔记。
+                </div>
+            </div>
+            <div style="margin-top: 0.9rem; font-size: 0.9rem; color: #5b616a; border-top: 1px solid #e0e3e8; padding-top: 0.9rem;">
+                ↳ 更详细的 FAQ 正在整理，之后会单独放在一个页面。
+            </div>
+        </div>
+
+        <!-- 再次访问句 + 链接卡片 -->
+        <div class="card" style="text-align: center; padding: 1.6rem 2rem 1.2rem;">
+            <p style="margin-bottom: 0.3rem; font-size: 1.05rem;">
+                如果你愿意，可以把这里加入书签，偶尔回来看看。
+            </p>
+            <p style="margin-bottom: 0.2rem;">
+                关于 <a href="https://index-dezhou.com">德州扑克游戏</a> 的碎片笔记，
+                就在这一页慢慢生长。
+            </p>
+            <div class="continue-link" style="text-align: center; margin-top: 0.7rem;">
+                <span class="btn-subtle" style="cursor: default;">♡ 已收藏 · 下次见</span>
+            </div>
+            <div class="muted-meta" style="margin-top: 0.9rem; font-size: 0.8rem;">
+                页面风格：浅灰 · 卡片 · 柔和阴影
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
